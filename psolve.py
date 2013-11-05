@@ -33,6 +33,7 @@ def get_id(name):
 		for q in range(0, NUM_ITEMS):
 			if prop_names[k][q] == name:
 				return (k, q)
+	assert False, "name %r not found" % name
 	return None
 
 def add_rule(kind, a="", b=""):
