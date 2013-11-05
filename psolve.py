@@ -3,11 +3,12 @@
 import sys
 
 prop_names = (
-	('Danish', 'Swedish', 'British', 'German', 'Norwegian'),
+	('Danish', 'Swede', 'Englishman', 'German', 'Norwegian'),
 	('water', 'tea', 'milk', 'coffee', 'beer'),
 	('yellow', 'blue', 'red', 'green', 'white'),
-	('Dunhill', 'Marlboro', 'Pall Mall', 'Rothmans', 'Winfield'),
-	('cat', 'horse', 'bird', 'fish', 'dog'))
+	('Pall Mall', 'Dunhill', 'Blend', 'Prince', 'Blue Masters'),
+	('cat', 'horse', 'bird', 'fish', 'dog'),
+)
 
 RULE_SAME_SLOT = 1
 RULE_NEXT_TO   = 2
@@ -70,25 +71,21 @@ add_rule(RULE_NEXT_TO, 'blue', 'Norwegian')
 add_predef(0, 'Norwegian')
 """
 
-add_predef(4, 'bird')
-add_predef(1, 'Norwegian')
-add_rule(RULE_SAME_SLOT, 'beer', 'Rothmans')
-add_rule(RULE_SAME_SLOT, 'green', 'Danish')
-add_rule(RULE_SAME_SLOT, 'green', 'dog')
-add_rule(RULE_SAME_SLOT, 'Rothmans', 'Danish')
-add_rule(RULE_SAME_SLOT, 'Marlboro', 'Norwegian')
-add_rule(RULE_SAME_SLOT, 'coffee', 'yellow')
-add_rule(RULE_SAME_SLOT, 'coffee', 'horse')
-add_rule(RULE_SAME_SLOT, 'yellow', 'Winfield')
-add_rule(RULE_SAME_SLOT, 'British', 'Pall Mall')
-add_rule(RULE_SAME_SLOT, 'Pall Mall', 'blue')
-add_rule(RULE_SAME_SLOT, 'white', 'German')
-add_rule(RULE_LEFT_OF, 'milk', 'horse')
-add_rule(RULE_LEFT_OF, 'fish', 'bird')
-add_rule(RULE_NEXT_TO, 'Swedish', 'water')
-add_rule(RULE_NEXT_TO, 'Pall Mall', 'Winfield')
-add_rule(RULE_NEXT_TO, 'fish', 'German')
-
+add_rule(RULE_SAME_SLOT, 'Englishman', 'red')
+add_rule(RULE_SAME_SLOT, 'Swede', 'dog')
+add_rule(RULE_SAME_SLOT, 'Danish', 'tea')
+add_rule(RULE_LEFT_OF, 'green', 'white')
+add_rule(RULE_SAME_SLOT, 'green', 'coffee')
+add_rule(RULE_SAME_SLOT, 'Pall Mall', 'bird')
+add_rule(RULE_SAME_SLOT, 'yellow', 'Dunhill')
+add_predef(2, 'milk')
+add_predef(0, 'Norwegian')
+add_rule(RULE_NEXT_TO, 'Blend', 'cat')
+add_rule(RULE_SAME_SLOT, 'Blue Masters', 'beer')
+add_rule(RULE_NEXT_TO, 'horse', 'Dunhill')
+add_rule(RULE_SAME_SLOT, 'German', 'Prince')
+add_rule(RULE_NEXT_TO, 'Norwegian', 'blue')
+add_rule(RULE_NEXT_TO, 'Blend', 'water')
 
 print rules
 
