@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-import whrandom 
+import random
 
 class Logger:
 	def __init__(self, files = []):
@@ -19,8 +19,8 @@ class Logger:
 old_stdout = sys.stdout
 sys.stdout = Logger([old_stdout, open("pgenerate.log", "w")])
 
-randrange = whrandom.randrange
-print 'seed:', whrandom._inst._seed
+randrange = random.randrange
+#print 'seed-ish:', random.getstate()
 
 prop_names = (
 	('Danish', 'Swedish', 'British', 'German', 'Norwegian'),
