@@ -92,6 +92,9 @@ add_rule(RULE_NEXT_TO, 'fish', 'German')
 
 print rules
 
+global done_work
+done_work = False
+
 def remove_prop(slot, prop, item, reason=""):
 	if not props[slot][prop][item]:
 		return 0
@@ -100,6 +103,8 @@ def remove_prop(slot, prop, item, reason=""):
 		print 'because', reason 
 	else:
 		print
+	global done_work
+	done_work = True
 	props[slot][prop][item] = 0
 	return 1
 
@@ -131,11 +136,15 @@ def force_prop(slot, prop, item):
 		props[slot][prop][k] = 0
 	props[slot][prop][item] = 1
 	final_map[slot][prop] = item
+	global done_work
+	done_work = True
 
 def is_final(slot, prop, item):
 	return final_map[slot][prop] == item
 
 while 1:
+	done_work = False
+
 	for rule in rules:
 		(kind, (p1, i1), (p2, i2)) = rule
 		if kind == RULE_SAME_SLOT:
@@ -189,7 +198,11 @@ while 1:
 				count = count - 1
 	if not count:
 		break
-	
+	if not done_work:
+		print "can't work any further, dumping partial map."
+		print
+		draw_map()
+		sys.exit(1)
 
 	#print
 	#draw_map()
